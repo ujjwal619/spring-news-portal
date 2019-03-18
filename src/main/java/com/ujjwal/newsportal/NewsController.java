@@ -17,7 +17,7 @@ import com.ujjwal.newsportal.model.News;
 public class NewsController {
 
 	@RequestMapping(value = "/news/submit", method = RequestMethod.POST)
-	public String newssubmit(HttpServletRequest request) {
+	public String newssubmit(HttpServletRequest request, Model model) {
 
 		String fn = request.getParameter("firstname"); 
 		String ln = request.getParameter("lastname");
@@ -27,18 +27,26 @@ public class NewsController {
 		
 		NewsDao ud = new NewsDaoImpl();
 		ud.connection();
+		
+	 
+	if ("".equals(fn)||"".equals(ln)||"".equals(nt)||"".equals(in)||"".equals(pd))
+	{
+		model.addAttribute("alert2", "All fields mandetory");
+		return "insertnews" ;
+	}
+	else	
 		ud.insertnews(fn, ln, nt, in, pd);
 		return "success";
 	}
 		
 	@RequestMapping(value = "/news", method = RequestMethod.GET)
 	public String test(Model model) {
-		NewsDao impl = new NewsDaoImpl();
-		List<News>newsList = impl.listNews();
+		NewsDaoImpl impl = new NewsDaoImpl();
+		List<News> newsList = impl.listNews();
 		System.out.println("control check for news in database");
 
 		System.out.println("newslist size="+ newsList.size());
 		model.addAttribute("news", newsList);
-		return "/news";
+		return "news";
 	}
 }

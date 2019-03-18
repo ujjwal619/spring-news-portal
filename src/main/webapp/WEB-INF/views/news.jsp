@@ -28,7 +28,7 @@ e<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 			    <%List<News> newsList = (List<News>) request.getAttribute("news"); %>
 				<%for (int i = 0; i < newsList.size(); i++) {%>
 			<tr>
-				<td><%=i%></td>
+				<td><%=i%></td> 
 				<td><%=newsList.get(i).getId()%></td>
 				<td><%=newsList.get(i).getNewtitle()%></td>
 				<td><%=newsList.get(i).getDescription()%></td>

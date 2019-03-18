@@ -7,8 +7,6 @@ import java.util.List;
 public interface NewsDao {
 	public List<News> listNews();
 
-	public void addNews(News news);
-
 	public void deleteNews(News news);
 
 	public void insertnews(News news);

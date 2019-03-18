@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.ujjwal.newsportal.db.DatabaseConnect;
@@ -17,7 +18,7 @@ public class NewsDaoImpl implements NewsDao {
 	@Override
 	public List<News> listNews() {
 		Connection con = DatabaseConnect.getMysqlConnection();
-		List<News> newsList = listNews();
+		List<News> newsList = new ArrayList<News>();
 		if (con != null) {
 			String sql = "Select * FROM news";
 			try {
@@ -60,11 +61,6 @@ public class NewsDaoImpl implements NewsDao {
 		}
 	}
 
-	@Override
-	public void addNews(News news) {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public void insertnews(String fname, String lname, String insertnews, String ntitle, String pdate) {
@@ -76,8 +72,8 @@ public class NewsDaoImpl implements NewsDao {
 				preparedStatement = conn.prepareStatement(sql);
 				preparedStatement.setString(1, fname);
 				preparedStatement.setString(2, lname);
-				preparedStatement.setString(3, ntitle);
-				preparedStatement.setString(4, insertnews);
+				preparedStatement.setString(3, insertnews);
+				preparedStatement.setString(4, ntitle);
 				preparedStatement.setString(5, pdate);
 				preparedStatement.executeUpdate();
 			} catch (SQLException e) {

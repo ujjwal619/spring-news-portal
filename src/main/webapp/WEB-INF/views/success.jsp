@@ -10,7 +10,7 @@
 </head>
 <body>
   news successfully posted........
-  <p><b> <a href="<c:url value="http://localhost:8080/newsportal/submit ${object.argument}" />" >click here.</a> to post the news again.</b></p>
+  <p><b> <a href="<c:url value="http://localhost:8080/newsportal/news/submit ${object.argument}" />" >click here.</a> to post the news again.</b></p>
   
 </body>
 </html>
